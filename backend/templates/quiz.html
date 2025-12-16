@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skincare Quiz</title>
+  <style>
+    body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  margin: 20px;
+}
+
+.question {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
+
+
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option {
+  margin: 10px;
+  padding: 15px;
+  width: 60%;
+  text-align: left;
+  background-color: #8A6240;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4C6444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body class="bg">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+  
+    .bg {
+      background-image: url("/static/images/q background.jpg");
+      height: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+  <div id="quiz-container">
+    <div id="question1" class="question">
+      <p>1. What's your age?</p>
+      <div class="options">
+        <label class="option"><input type="radio" name="q1" value="teens"> Teens and 20's</label>
+        <label class="option"><input type="radio" name="q1" value="30s"> 30's</label>
+        <label class="option"><input type="radio" name="q1" value="40s"> 40's</label>
+        <label class="option"><input type="radio" name="q1" value="50s"> 50's or above</label>
+      </div>
+      <button onclick="nextQuestion(1)">Continue</button>
+    </div>
+
+    <div id="question2" class="question" style="display: none;">
+      <p>2. How does your skin feel at the end of the day?</p>
+      <div class="options">
+        <label class="option"><input type="radio" name="q2" value="a"> It feels dry and flakey, sometimes irritated</label>
+        <label class="option"><input type="radio" name="q2" value="b"> It feels the same as in the morning, great!</label>
+        <label class="option"><input type="radio" name="q2" value="c"> Dry cheeks, but nose & forehead are shiny</label>
+        <label class="option"><input type="radio" name="q2" value="d"> My skin becomes shiny throughout the day</label>
+      </div>
+      <button onclick="nextQuestion(2)">Continue</button>
+    </div>
+
+    <div id="question3" class="question" style="display: none;">
+      <p>3. What is your primary skin goal?</p>
+      <div class="options">
+        <label class="option"><input type="radio" name="q3" value="hydration"> Increase skin hydration</label>
+        <label class="option"><input type="radio" name="q3" value="acne"> Treat acne and breakouts</label>
+        <label class="option"><input type="radio" name="q3" value="wrinkles"> Reduce fine lines and wrinkles</label>
+        <label class="option"><input type="radio" name="q3" value="hyperpigmentation"> Treat hyperpigmentation and discoloration</label>
+        <label class="option"><input type="radio" name="q3" value="brightness"> Increase skin brightness</label>
+        <label class="option"><input type="radio" name="q3" value="oiliness"> Control oiliness & shine</label>
+      </div>
+      <button onclick="nextQuestion(3)">Continue</button>
+    </div>
+
+    <div id="question4" class="question" style="display: none;">
+      <p>4. Which of the following best describes the climate in which you live?</p>
+      <div class="options">
+        <label class="option"><input type="radio" name="q4" value="city"> Large City (Pollution)</label>
+        <label class="option"><input type="radio" name="q4" value="desert"> Desert / Dry Climate</label>
+        <label class="option"><input type="radio" name="q4" value="humid"> Humid or Moist</label>
+        <label class="option"><input type="radio" name="q4" value="traveler"> Perpetual Traveler</label>
+      </div>
+      <button onclick="nextQuestion(4)">Continue</button>
+    </div>
+
+    <div id="question5" class="question" style="display: none;">
+      <p>5. Is your skin sensitive to any of the following ingredients?</p>
+      <div class="options">
+        <label class="option"><input type="radio" name="q5" value="lavender"> Lavender</label>
+        <label class="option"><input type="radio" name="q5" value="tea-tree"> Tea Tree</label>
+        <label class="option"><input type="radio" name="q5" value="aloe-vera"> Aloe Vera</label>
+        <label class="option"><input type="radio" name="q5" value="citrus-oils"> Citrus Oils</label>
+        <label class="option"><input type="radio" name="q5" value="none"> None of the above</label>
+      </div>
+      <button onclick="window.location.href='/home'">Next</button>
+
+    </div>
+
+    <div id="result" style="display: none;"></div>
+  </div>
+
+  <script>
+    let currentQuestion = 1;
+let skinType = '';
+
+function nextQuestion(questionNumber) {
+  const selectedOptions = document.querySelectorAll(`input[name="q${questionNumber}"]:checked`);
+
+  if (selectedOptions.length > 0) {
+    // Determine skin type only for question 2
+    if (questionNumber === 2) {
+      determineSkinType(selectedOptions[0].value);
+    }
+
+    hideCurrentQuestion(); // Hide current question regardless of number
+    showNextQuestion(questionNumber + 1); // Move to the next question
+  } else {
+    alert('Please select an option.');
+  }
+}
+
+function determineSkinType(option) {
+  switch (option) {
+    case 'a':
+      skinType = 'Dry Skin';
+      break;
+    case 'b':
+      skinType = 'Normal Skin';
+      break;
+    case 'c':
+      skinType = 'Combination Skin';
+      break;
+    case 'd':
+      skinType = 'Oily Skin';
+      break;
+    default:
+      break;
+  }
+}
+
+function hideCurrentQuestion() {
+  const currentQuestionElement = document.getElementById(`question${currentQuestion}`);
+  currentQuestionElement.style.display = 'none';
+}
+
+function showNextQuestion(questionNumber) {
+  const nextQuestionElement = document.getElementById(`question${questionNumber}`);
+  nextQuestionElement.style.display = 'block';
+
+  currentQuestion = questionNumber;
+}
+
+function continueToNextQuestion() {
+  hideResult();
+  showNextQuestion(currentQuestion + 1);
+}
+
+// Function to hide result (assuming you have it implemented in HTML)
+function hideResult() {
+  const resultElement = document.getElementById('result');
+  resultElement.style.display = 'none';
+}
+
+  </script>
+</body>
+</html>
