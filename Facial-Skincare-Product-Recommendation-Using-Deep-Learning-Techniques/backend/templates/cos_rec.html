@@ -1,0 +1,215 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Skincare Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh; /* 100% of viewport height */
+            background-image: url("/static/images/q_background.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 70%;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Add background color with transparency */
+        }
+
+        h1 {
+            color: #4C6444;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none; /* Remove default bullet points */
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .product-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .product-link {
+            color: #333; /* Text color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .product-link:hover {
+            color: #555; /* Change color on hover */
+        }
+
+        #back-button {
+            background-color: #8A6240;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            text-decoration: none; /* Remove underline */
+        }
+
+        #back-button:hover {
+            background-color: #6c4a2d;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Recommended Skincare Products</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <div class="product-box">
+                <a class="product-link" href="{{ product.product_url }}" target="_blank">
+                    <strong>{{ product.product_name }}</strong>
+                </a>
+                <p>Price: {{ product.price }}</p>
+                <p>Cosine Similarity: {{ product.cosine_similarity }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a id="back-button" href="/home" class="button">Back</a>
+</div>
+</body>
+</html>
+\ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Skincare Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-box {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .product-link {
+            text-decoration: none;
+            color: #8A6240;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .product-link:hover {
+            color: #6c4a2d;
+        }
+
+        .back-button {
+            background-color: #8A6240;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #6c4a2d;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Recommended Skincare Products</h1>
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-box">
+            <!-- <img class="product-image" src="/static/images/{{ product.image }}" alt="{{ product.product_name }}"> -->
+            <div class="product-details">
+                <h3 class="product-name">{{ product.product_name }}</h3>
+                <p class="product-price">Price: £{{ product.price }}</p>
+                <p class="product-price">cosine_similarity: {{ product.cosine_similarity }}</p>
+                <a class="product-link" href="{{ product.product_url }}" target="_blank">View Product</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/home" class="back-button">Back to Home</a>
+</div>
+</body>
+</html>

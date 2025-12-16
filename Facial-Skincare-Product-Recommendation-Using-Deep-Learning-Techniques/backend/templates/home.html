@@ -1,0 +1,103 @@
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+          body, html {
+            height: 100%;
+            margin: 0;
+          }
+      
+          .bg {
+            background-image: url("/static/images/q_background.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          
+      
+          .container {
+            max-width: 600px;
+            width: 100%;
+            height: 370px; /* Set your desired height */
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          
+          }
+      
+          .col-sm {
+            margin-bottom: 20px;
+          }
+      
+          h1 span.badge {
+            background-color: #4C6444; 
+            color: #fff; 
+            padding: 10px;
+            border-radius: 5px;
+          }
+      
+          form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+          }
+      
+          input[type="file"],
+          input[type="submit"] {
+            width: 280px; 
+            margin-bottom: 10px;
+            background-color: #8A6240; 
+            color: #fff; 
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        </style>
+        <title>Upload Image</title>
+      </head>
+      <body class="bg">
+        <div class="container">
+          <div class="col-sm">
+            <h1><span class="badge badge-danger">Unlock Your Radiance</span></h1>
+          </div>
+      
+          <div class="col-sm">
+            <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+              <input type="file" name="file" />
+              <input type="submit" value="Upload">
+            </form>
+
+            <script>
+              // Function to handle file upload
+              function handleFileUpload(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                
+                // Read the file and save it locally
+                reader.onload = function(e) {
+                  localStorage.setItem('uploadedImage', e.target.result);
+                };
+                
+                reader.readAsDataURL(file);
+              }
+          
+              // Attach event listener to the file input
+              document.getElementById('fileInput').addEventListener('change', handleFileUpload);
+            </script>
+          </div>
+        </div>
+      </body>
+      </html>
+      

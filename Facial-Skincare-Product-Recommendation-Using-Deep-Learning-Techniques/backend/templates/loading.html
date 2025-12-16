@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+</head>
+<body>
+    <h1>Loading Page</h1>
+    <!-- Assuming you have a placeholder for the image -->
+    <img id="uploadedImage" src="" alt="Uploaded Image">
+    
+    <script>
+        // Retrieve the saved image URL from local storage
+        const savedImage = localStorage.getItem('uploadedImage');
+        
+        // Redirect to the '/predict' page after 5 seconds with the savedImage URL
+        setTimeout(function() {
+            // Construct the URL for redirecting to '/predict'
+            const url = '/predict?image=' + encodeURIComponent(savedImage);
+            
+            // Redirect to the constructed URL
+            window.location.href = url;
+        }, 5000); // 5 seconds
+        
+        // Set the image source
+        if (savedImage) {
+            document.getElementById('uploadedImage').src = savedImage;
+        }
+    </script>
+</body>
+</html>

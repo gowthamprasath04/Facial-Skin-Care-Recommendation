@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skincare Routine Recommendation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh; /* 100% of viewport height */
+      background-image: url("/static/images/q_background.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 20px;
+      text-align: center;
+      color: #040404; /* Set text color to white */
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+
+      background-color: rgba(255,255,255,0.8) 
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #4C6444;
+    }
+
+    h2 {
+      color: #8A6240; 
+    }
+
+    h3 {
+      color: #582F0e; 
+    }
+
+    ol {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ol li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #656D4A;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #recommendation-button {
+          background-color: #8A6240;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 20px;
+    }
+    
+    #recommendation-button:hover {
+      background-color: #8A6240;
+    \}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sculpted Serenity !! Your Exclusive Path to Beaut</h2>
+
+<p>Skin Type: {{ skin_type }}</p>
+<p>Acne Type: {{ acne_type }}</p>
+
+
+
+{% if skin_type == 'Dry_skin' %}
+<h3>Dry Skin Skincare Routine: Morning & Night</h3>
+<ol>
+    <h3>Morning Routine:</h3>
+  <li>Cleanse: <a href="https://www.target.com/p/cerave-hydrating-face-wash-with-hyaluronic-acid-and-glycerin-for-normal-to-dry-skin-12-fl-oz/-/A-13977968" target="_blank">CeraVe Hydrating Facial Cleanser</a></li>
+  <li>Toner: <a href="https://www.amazon.com/Thayers-Alcohol-Free-Witch-Formula-Unscented/dp/B001DJDP7C" target="_blank">Thayers Witch Hazel Toner (alcohol-free)</a></li>
+  <li>Serum: <a href="https://www.cultbeauty.co.uk/the-ordinary-hyaluronic-acid-2-b5-30ml/11363395.html" target="_blank">The Ordinary Hyaluronic Acid 2% + B5</a></li>
+  <li>Moisturizer: <a href="https://www.target.com/p/cerave-moisturizing-face-38-body-cream-for-normal-to-dry-skin-16-fl-oz/-/A-13977967" target="_blank">CeraVe Moisturizing Cream</a></li>
+</ol>
+<ol>
+  <h3>Night Routine:</h3>
+  <ol>
+    <li>Cleanse: <a href="https://www.target.com/p/cerave-hydrating-face-wash-with-hyaluronic-acid-and-glycerin-for-normal-to-dry-skin-12-fl-oz/-/A-13977968" target="_blank">CeraVe Hydrating Facial Cleanser</a></li>
+    <li>Exfoliate: <a href="https://www.lookfantastic.de/the-ordinary-lactic-acid-10-ha-2-superficial-peeling-formulation-30ml/11363400.html" target="_blank">The Ordinary Lactic Acid 10% + HA 2%</a></li>
+    <li>Serum: <a href="https://www.ulta.com/p/granactive-retinoid-2-emulsion-pimprod2007125" target="_blank">The Ordinary Granactive Retinoid 2% Emulsion</a></li>
+    <li>Moisturizer: <a href="https://www.target.com/p/cerave-moisturizing-face-38-body-cream-for-normal-to-dry-skin-16-fl-oz/-/A-13977967" target="_blank">CeraVe Moisturizing Cream</a></li>
+  </ol>
+</ol>
+{% endif %}
+
+
+{% if skin_type == 'Normal_skin' %}
+<h3>Normal Skin Skincare Routine: Morning & Night</h3>
+<ol>
+    <h3>Morning Routine:</h3>
+  <li>Cleanse: <a href="https://www.target.com/p/cetaphil-gentle-skin-cleanser-16-fl-oz/-/A-83019455" target="_blank">Cetaphil Gentle Skin Cleanser</a></li>
+  <li>Toner: <a href="https://www.amazon.com/Thayers-Alcohol-Free-Witch-Formula-Unscented/dp/B001DJDP7C" target="_blank">Thayers Witch Hazel Toner (alcohol-free)</a></li>
+  <li>Serum: <a href="https://www.cultbeauty.co.uk/the-ordinary-hyaluronic-acid-2-b5-30ml/11363395.html" target="_blank">The Ordinary Hyaluronic Acid 2% + B5</a></li>
+  <li>Moisturizer: <a href="https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-gel-with-hyaluronic-acid/6811047.html" target="_blank">Neutrogena Hydro Boost Water Gel</a></li>
+</ol>
+<ol>
+  <h3>Night Routine:</h3>
+  <ol>
+    <li>Cleanse: <a href="https://www.target.com/p/cetaphil-gentle-skin-cleanser-16-fl-oz/-/A-83019455" target="_blank">Cetaphil Gentle Skin Cleanser</a></li>
+    <li>Exfoliate: <a href="https://www.lookfantastic.de/the-ordinary-lactic-acid-10-ha-2-superficial-peeling-formulation-30ml/11363400.html" target="_blank">The Ordinary Lactic Acid 10% + HA 2%</a></li>
+    <li>Serum: <a href="https://www.ulta.com/p/granactive-retinoid-2-emulsion-pimprod2007125" target="_blank">The Ordinary Granactive Retinoid 2% Emulsion</a></li>
+    <li>Moisturizer: <a href="https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-gel-with-hyaluronic-acid/6811047.html" target="_blank">Neutrogena Hydro Boost Water Gel</a></li>
+  </ol>
+</ol>
+{% endif %}
+
+
+{% if skin_type == 'Oil_skin' %}
+<h3>Oily Skin Skincare Routine: Morning & Night</h3>
+<ol>
+    <h3>Morning Routine:</h3>
+  <li>Cleanse: <a href="https://www.amazon.com/CeraVe-Foaming-Facial-Cleanser-Washing/dp/B01N1LL62W" target="_blank">CeraVe Foaming Facial Cleanser</a></li>
+  <li>Toner: <a href="https://www.walmart.com/ip/Thayers-Alcohol-Free-Unscented-Witch-Hazel-Facial-Toner-8-5-oz/673336960" target="_blank">Thayers Witch Hazel Toner (alcohol-free)</a></li>
+  <li>Serum: <a href="https://www.lookfantastic.dk/the-ordinary-niacinamide-10-zinc-1-30ml/13187076.html" target="_blank">The Ordinary Niacinamide 10% + Zinc 1%</a></li>
+  <li>Moisturizer: <a href="https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-gel-with-hyaluronic-acid/6811047.html" target="_blank">Neutrogena Hydro Boost Water Gel</a></li>
+</ol>
+<ol>
+  <h3>Night Routine:</h3>
+  <ol>
+    <li>Cleanse: <a href="https://www.amazon.com/CeraVe-Foaming-Facial-Cleanser-Washing/dp/B01N1LL62W" target="_blank">CeraVe Foaming Facial Cleanser</a></li>
+    <li>Exfoliate: <a href="https://www.lookfantastic.de/the-ordinary-lactic-acid-10-ha-2-superficial-peeling-formulation-30ml/11363400.html" target="_blank">The Ordinary Lactic Acid 10% + HA 2%</a></li>
+    <li>Moisturizer: <a href="https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-gel-with-hyaluronic-acid/6811047.html" target="_blank">Neutrogena Hydro Boost Water Gel</a></li>
+  </ol>
+</ol>
+{% endif %}
+<!-- Button to view recommendations -->
+<button id="recommendation-button" onclick="window.location.href='/rec'">Click here for Cosine Simlarity recommended products for your skin type</button>
+
+</div>
+</body>
+</html>
